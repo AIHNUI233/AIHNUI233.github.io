@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- saved from url=(0149)file:///D:/BackroomsXJ/data/test/original/%E4%BD%9C%E8%80%85%E9%A1%B5%20-%20The%20Backrooms%E4%B8%AD%E6%96%87%E7%BB%B4%E5%9F%BA_files/styleFrame.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+      "use strict";
+
+      // Expose identity for interwikiFrame
+      window.isStyleFrame = true;
+
+      // Find interwikiFrames in the parent that have initialised before
+      // this styleFrame did, and push the query parameters to it
+      Array.prototype.slice.call(parent).forEach(function (frame) {
+        try {
+          if (frame.isInterwikiFrame) {
+            frame.requestStyleChange(location.search);
+          }
+        } catch (error) {
+          // If an interwikiFrame in the parent isn't ready to receive a style
+          // change request, that's fine - it will pull the style from this
+          // styleFrame when it's ready
+          if (!(error instanceof DOMException)) {
+            // All other errors must be reported
+            throw error;
+          }
+        }
+      });
+    </script>
+  </head>
+<body>
+</body></html>
